@@ -1,0 +1,15 @@
+@media only screen and (min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi) {
+  .show-for-retina {
+    display:block;
+  }
+  .hide-for-retina {
+    display:none;
+  }
+  .show-for-retina.desktop-logo {
+    display:inline-block;
+  }
+  .hide-for-retina.desktop-logo {
+    display:none;
+  }
+}

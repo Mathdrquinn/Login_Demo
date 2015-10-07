@@ -1,0 +1,37 @@
+$side-width: 225px;
+header {
+  h1 {
+    margin-left: $side-width;
+    padding: 8px 0px;
+  }
+  nav {
+    background: $second;
+
+    position: fixed;
+
+    height: 100%;
+    width: $side-width;
+    ul {
+      padding-top: 18px;
+    }
+    ul > li {
+      background: $white;
+      border-bottom: 3px solid $main;
+
+      position: relative;
+      left: -13px;
+      padding-left: 33px;
+      margin: 0 0 5px 0;
+      transition: left 300ms ease;
+      &:hover {
+        left: -5px;
+      }
+      a {
+        font-weight: 300;
+        line-height: 45px;
+        color: $second;
+        text-decoration: none;
+      }
+    }
+  }
+}

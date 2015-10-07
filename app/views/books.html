@@ -1,0 +1,19 @@
+<div class="row pad">
+  <form ng-init="newBook">
+    <input type="text" ng-model="newBook.title" placeholder="Title">
+    <br />
+    <input type="text" ng-model="newBook.author" placeholder="Author">
+    <p><a ng-click="addBook(newBook)" class="btn">Add Book</a></p>
+  </form>
+  <ul>
+    <li ng-repeat="book in books" style="position:relative;">
+      <header>
+        <h4 class="no-margin" ng-bind="book.title"></h4>
+        <h6 ng-bind="book.author"></h6>
+        <code>{{book | json }}</code>
+      </header>
+      <a ng-click="removeBook($index)" class="remove" style="position:absolute;top:5px;right:5px;color:red;">x</a>
+    </li>
+  </ul>
+  <p><a href="" ng-click="showUsers()" class="btn">Show Users</a></p>
+</div>

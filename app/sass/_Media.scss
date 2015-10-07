@@ -1,0 +1,15 @@
+@media only screen and (max-width: 1024px) {
+  // No more Tablet Images
+}
+
+@media only screen and (max-width: 600px) {
+  .show-for-desk {
+    display: none;
+  }
+  .show-for-tab {
+    display: none;
+  }
+  .show-for-mob {
+    display: block;
+  }
+}

@@ -1,0 +1,39 @@
+/* CTA Styling
+//////////////////////////////////
+*/
+body,
+*, {
+  font-weight: 300;
+}
+.master-container {
+  a {
+    color: $second;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+      color: $third;
+      text-decoration: none;
+    }
+  }
+}
+a.btn {
+  background-color: $main;
+  color: $white;
+  font-weight: 300;
+  background-color: $main;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  padding:13px 38px;
+  &:hover {
+    color: $white;
+    background-color: lighten($main, 8%);
+  }
+  &.inline-left {
+    float: left;
+  }
+  &.inline-right {
+    float: right;
+  }
+}

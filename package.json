@@ -1,0 +1,35 @@
+{
+  "name": "OCDirectory",
+  "version": "1.0.0",
+  "description": "Angualr Carousel Generator",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Angular",
+    "Carousel"
+  ],
+  "author": "Brendan Quinn (bquinn@sriservices.com",
+  "license": "MIT",
+  "devDependencies": {
+    "connect-livereload": "^0.5.3",
+    "express": "^4.11.2",
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.1.0",
+    "gulp-minify-css": "^0.4.5",
+    "gulp-rename": "^1.2.0",
+    "gulp-ruby-sass": "^1.0.0-alpha.3",
+    "tiny-lr": "^0.1.5"
+  },
+  "dependencies": {
+    "angular": "^1.4.1",
+    "angular-animate": "^1.4.5",
+    "angular-resource": "^1.4.1",
+    "angularfire": "^1.1.1",
+    "foundation-grid": "^0.1.0",
+    "jquery": "^2.1.4",
+    "swiper": "^3.1.0",
+    "twitter-bootstrap": "^2.1.1"
+  }
+}
