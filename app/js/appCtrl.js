@@ -3,7 +3,7 @@
 
     angular
         .module('LoginApp')
-        .controller('appCtrl', ['$scope', '$filter', '$state', '$firebaseObject', function ($scope, $filter, $state, $firebaseObject) {
+        .controller('appCtrl', ['$scope', '$filter', '$state', '$firebaseObject', 'loginSvc', function ($scope, $filter, $state, $firebaseObject, loginSvc) {
 
             // Checker
             $scope.works = 'appCtrl is here, Yatta!';
@@ -14,9 +14,17 @@
             // download the data into a local object
             $scope.data = $firebaseObject(ref);
 
-
             $scope.consoleData = function () {
               console.log($scope.data);
+            }
+
+
+            if(loginSvc.user) {
+              console.log(loginSvc.user);
+              $scope.user = loginSvc.user;
+            } else {
+              console.log(loginSvc.user)
+              $scope.user = false;
             }
 
 

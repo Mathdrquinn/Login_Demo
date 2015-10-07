@@ -2,8 +2,8 @@
 
   angular
       .module('LoginApp')
-      .factory('booksSvc',  ['$firebaseArray',
-          function($firebaseArray) {
+      .factory('booksSvc',  ['$firebaseArray', '$firebaseAuth',
+          function($firebaseArray, $firebaseAuth) {
 
             // Checker
             var works = 'appCtrl is here, Yatta!';
@@ -28,7 +28,6 @@
                 books.$remove(idx).then(function(ref) {
                     // data has been deleted locally and in the database
                     console.log('deletion')
-                    debugger;
                 }, function(error) {
                     console.log("Error:", error);
                 });
@@ -39,7 +38,6 @@
                 books: books,
                 addBook: addBook,
                 removeBook: removeBook
-
             }
           }
       ])

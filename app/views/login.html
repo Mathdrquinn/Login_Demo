@@ -1,1 +1,20 @@
-<h2>Log-in</h2>
+<div class="row pad">
+  <h2>Login</h2>
+  <h3>Login with Email and Passowrd</h3>
+  <p>
+    <form ng-submit="login(user)" ng-init="user = {}">
+      <label for="email">
+        Email <br />
+        <input name="email" type="email" ng-model="user.email">
+      </label>
+      <br />
+      <label for="password">
+        Password <br />
+        <input name="password" type="password" ng-model="user.password">
+      </label>
+      <button type="submit">Login</button>
+    </form>
+    <p ng-if="success">Account Created</p>
+    <code ng-if="success">{{success | json }}</code>
+  </p>
+</div>

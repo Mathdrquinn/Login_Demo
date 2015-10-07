@@ -1,1 +1,14 @@
-<h3>User</h3>
+<div class="row pad" ng-if="user">
+  <p class="warning">
+    You are not logged in. <br />
+    <a ui-sref="login" class="btn inline-left">Login</a>
+    <a ui-sref="signup" class="btn inline-left">Sign Up</a>
+  </p>
+  <code>{{ user | json }}</code>
+</div>
+<div class="row pad" ng-if="!user">
+  <h2>User</h2>
+  <p ng-bind="user.password.email"></p>
+  <code ng-bind="user | json"></code>
+  <img ng-src="{{user.password.profileImageURL}}" alt="{{user.password.email}}" />
+</div>

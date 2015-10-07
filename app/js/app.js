@@ -7,6 +7,8 @@ angular
     'ngResource',
     'ngSanitize',
     'ui.router',
+    'signupGroup',
+    'loginGroup'
   ])
   .config(($httpProvider, $locationProvider, $stateProvider, $urlRouterProvider) => {
     // Clean Url
@@ -15,16 +17,16 @@ angular
   })
   .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('login', {
-      url: '/login',
-      templateUrl: 'views/login.html',
-      controller: 'appCtrl'
-    })
-    .state('signup', {
-      url: '/signup',
-      templateUrl: 'views/signup.html',
-      controller: 'appCtrl'
-    })
+    // .state('login', {
+    //   url: '/login',
+    //   templateUrl: 'views/login.html',
+    //   controller: 'appCtrl'
+    // })
+    // .state('signup', {
+    //   url: '/signup',
+    //   templateUrl: 'views/signup.html',
+    //   controller: 'signupCtrl'
+    // })
     .state('books', {
       url: '/books',
       templateUrl: 'views/books.html',

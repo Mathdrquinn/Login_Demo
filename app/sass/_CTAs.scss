@@ -17,8 +17,9 @@ body,
     }
   }
 }
-a.btn {
+button, a.btn {
   background-color: $main;
+  border: none;
   color: $white;
   font-weight: 300;
   background-color: $main;

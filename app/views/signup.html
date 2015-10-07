@@ -1,1 +1,20 @@
-<h2>Sign up</h2>
+<div class="row pad">
+  <h2>Sign Up</h2>
+  <h3>Signup With Email and password</h3>
+  <p>
+    <form ng-submit="createUser(user)" ng-init="user = {}">
+      <input type="text" ng-model="user.email">
+      <input type="password" ng-model="user.password">
+      <button type="submit">Create Account</button>
+    </form>
+    <p ng-if="success">Account Created</p>
+    <code>{{success | json }}</code>
+  </p>
+  <h3>Signup Annonymously</h3>
+  <p>
+    <button ng-click="login()">Login Anonymously</button>
+
+    <p ng-if="authData">Logged in user: <strong>{{ authData.uid }}</strong></p>
+    <p ng-if="error">Error: <strong>{{ error }}</strong></p>
+  </p>
+</div>

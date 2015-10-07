@@ -20,15 +20,15 @@ header {
 
       position: relative;
       left: -13px;
-      padding-left: 33px;
       margin: 0 0 5px 0;
       transition: left 300ms ease;
       &:hover {
         left: -5px;
       }
       a {
+        display: block;
+        padding: 13px 33px 13px;
         font-weight: 300;
-        line-height: 45px;
         color: $second;
         text-decoration: none;
       }
