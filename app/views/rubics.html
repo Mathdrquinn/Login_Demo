@@ -37,21 +37,10 @@
         <br>
         <input name="rubicsRZ" type="range" min="-180" max="180" ng-model="rubicsRZ">
       </label>
-      <!-- <input type="checkbox"
-       ng-model="move.z"
-       [name="move.z"]
-       [ng-true-value="true"]
-       [ng-false-value="false"]>
-       <input type="checkbox"
-        ng-model="move.z"
-        [name="move.z"]
-        [ng-true-value="true"]
-        [ng-false-value="false"]>
-        <input type="checkbox"
-         ng-model="move.z"
-         [name="move.z"]
-         [ng-true-value="true"]
-         [ng-false-value="false"]> -->
+
+      <button ng-click="getScope()">Rubics</button>
+      <button ng-click="rubics = loop(rubics, resetCubeStyles)">Reset</button>
+
       <select name="moveZ" id="moveZ" ng-model="move.z" ng-change="move.dim = 'z'; move.spin = 'z'">
         <option value="">---Please select---</option> <!-- not selected / blank option -->
         <option value="0">0</option> <!-- interpolation -->
@@ -70,7 +59,7 @@
         <option value="1">1</option>
         <option value="2">2</option>
       </select>
-      <button ng-click="slideForward(move)">move</button>
+      <button ng-click="rubics = loop(rubics, slideForward)">move</button>
 
 
     </form>

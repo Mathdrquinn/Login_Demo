@@ -3,8 +3,8 @@
 
         angular
             .module('rubicsGroup')
-            .controller('rubicsCtrl', ['$scope', '$filter', 'rubicsSvc',
-                function ($scope, $filter, rubicsSvc) {
+            .controller('rubicsCtrl', ['$scope', '$filter', '$http',
+                function ($scope, $filter, $http) {
 
                     // Checker
                     $scope.works = "Yatta!"
@@ -23,11 +23,40 @@
                       }
                       debugger;
 
-
                       $scope.rubics = scope.rubics;
 
                       debugger;
                       return false;
+                    }
+
+                    $scope.loop = function (data, func) {
+                        for (var i = 0; i < data.sections.length; i++) {
+                            for (var cube in data.sections[i]) {
+                                if(data.sections[i][cube].start) {
+                                  data.sections[i][cube] = func(data.sections[i][cube]);
+                                }
+                            }
+                        }
+                        $scope.move = {};
+                        return data;
+                    }
+
+                    $scope.setCubeStyles = function (cube) {
+                        var newStyle = {
+                                transform : "translate(" + 0 + "px, " + 0 + "px) translateZ(" + 0 + "px) rotateX(" + (cube.startCoords.x - cube.currentCoords.x) * 90 + "deg) rotateY(" + (cube.startCoords.y - cube.currentCoords.y) * 90 + "deg) rotateZ(" + (cube.startCoords.z - cube.currentCoords.z) * 90 + "deg)",
+                        };
+                        cube.cubeStyles = newStyle;
+                        return cube;
+                    }
+                    $scope.resetCubeStyles = function (cube) {
+                          cube.currentCoords.z = cube.startCoords.z;
+                          cube.currentCoords.y = cube.startCoords.y;
+                          cube.currentCoords.x = cube.startCoords.x;
+                          var newStyle = {
+                                  transform : "translate(" + 0 + "px, " + 0 + "px) translateZ(" + 0 + "px) rotateX(" + (cube.startCoords.x - cube.currentCoords.x) * 90 + "deg) rotateY(" + (cube.startCoords.y - cube.currentCoords.y) * 90 + "deg) rotateZ(" + (cube.startCoords.z - cube.currentCoords.z) * 90 + "deg)",
+                          };
+                          cube.cubeStyles = newStyle;
+                          return cube;
                     }
 
                     $scope.move = {};
@@ -39,662 +68,29 @@
                           currentX = cube.currentCoords.x;
                     }
 
-                    $scope.slideForward = function (move) {
-                      console.log('slideForward')
-                      for (var i = 0; i < $scope.rubics.sections.length; i++) {
-                        console.log('Seciton ' + i);
-                        for (var cube in $scope.rubics.sections[i]) {
+                    $scope.slideForward = function (cube) {
+                        if (cube.start) {
 
-                          if ($scope.rubics.sections[i][cube].start) {
-
-                            var block = $scope.rubics.sections[i][cube],
-                                dim = move.dim,
-                                movePos = parseFloat(move[dim]);
-
-                            if (block.currentCoords[dim] === movePos) {
-                                console.log('Yes to: ' + block.start);
-                                block.currentCoords[dim]++
-                                block.setCubeStyles();
-                            } else {
-                             console.log('No to: ' + block.start);
-                            }
-
+                          var dim = $scope.move.dim,
+                              movePos = parseFloat($scope.move[dim]);
+                          if (cube.currentCoords[dim] === movePos) {
+                              console.log('Yes to: ' + cube.start);
+                              cube.currentCoords[dim]++
+                              cube = $scope.setCubeStyles(cube);
+                          } else {
+                           console.log('No to: ' + cube.start);
                           }
+
                         }
-                      }
-                      $scope.move = {};
+                      return cube;
                     }
 
-                    $scope.rubics = {
-                      sections: [
-                        {
-                            '000': {
-                                start: '000',
-                                startCoords: {
-                                  z: 0,
-                                  y: 0,
-                                  x: 0,
-                                },
-                                currentCoords: {
-                                  z: 0,
-                                  y: 0,
-                                  x: 0,
-                                },
-                                cubeStyles: {},
-                                setCubeStyles: function () {
-                                    var styles = {
-                                        'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                    };
+                    $http.get('js/rubics/rubics.json').success(function(data) {
+                        $scope.rubics = $scope.loop(data, $scope.setCubeStyles);
+                    });
 
-                                    this.cubeStyles = styles;
-
-                                    return styles;
-                                }
-                            },
-                            '001': {
-                                start: '001',
-                                startCoords: {
-                                  z: 0,
-                                  y: 0,
-                                  x: 1,
-                                },
-                                currentCoords: {
-                                  z: 0,
-                                  y: 0,
-                                  x: 1,
-                                },
-                                cubeStyles: {},
-                                setCubeStyles: function () {
-                                    var styles = {
-                                        'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                    };
-
-                                    this.cubeStyles = styles;
-
-                                    return styles;
-                                }
-                            },
-                            '002': {
-                                start: '002',
-                                startCoords: {
-                                  z: 0,
-                                  y: 0,
-                                  x: 2,
-                                },
-                                currentCoords: {
-                                  z: 0,
-                                  y: 0,
-                                  x: 2,
-                                },
-                                cubeStyles: {},
-                                setCubeStyles: function () {
-                                    var styles = {
-                                        'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                    };
-
-                                    this.cubeStyles = styles;
-
-                                    return styles;
-                                }
-                            },
-                            '010': {
-                                start: '010',
-                                startCoords: {
-                                  z: 0,
-                                  y: 1,
-                                  x: 0,
-                                },
-                                currentCoords: {
-                                  z: 0,
-                                  y: 1,
-                                  x: 0,
-                                },
-                                cubeStyles: {},
-                                setCubeStyles: function () {
-                                    var styles = {
-                                        'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                    };
-
-                                    this.cubeStyles = styles;
-
-                                    return styles;
-                                }
-                            },
-                            '011': {
-                                start: '011',
-                                startCoords: {
-                                  z: 0,
-                                  y: 1,
-                                  x: 1,
-                                },
-                                currentCoords: {
-                                  z: 0,
-                                  y: 1,
-                                  x: 1,
-                                },
-                                cubeStyles: {},
-                                setCubeStyles: function () {
-                                    var styles = {
-                                        'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                    };
-
-                                    this.cubeStyles = styles;
-
-                                    return styles;
-                                }
-                            },
-                            '012': {
-                                start: '012',
-                                startCoords: {
-                                  z: 0,
-                                  y: 1,
-                                  x: 2,
-                                },
-                                currentCoords: {
-                                  z: 0,
-                                  y: 1,
-                                  x: 2,
-                                },
-                                cubeStyles: {},
-                                setCubeStyles: function () {
-                                    var styles = {
-                                        'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                    };
-
-                                    this.cubeStyles = styles;
-
-                                    return styles;
-                                }
-                            },
-                            '020': {
-                                start: '020',
-                                startCoords: {
-                                  z: 0,
-                                  y: 2,
-                                  x: 0,
-                                },
-                                currentCoords: {
-                                  z: 0,
-                                  y: 2,
-                                  x: 0,
-                                },
-                                cubeStyles: {},
-                                setCubeStyles: function () {
-                                    var styles = {
-                                        'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                    };
-
-                                    this.cubeStyles = styles;
-
-                                    return styles;
-                                }
-                            },
-                            '021': {
-                                start: '021',
-                                startCoords: {
-                                  z: 0,
-                                  y: 2,
-                                  x: 1,
-                                },
-                                currentCoords: {
-                                  z: 0,
-                                  y: 2,
-                                  x: 1,
-                                },
-                                cubeStyles: {},
-                                setCubeStyles: function () {
-                                    var styles = {
-                                        'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                    };
-
-                                    this.cubeStyles = styles;
-
-                                    return styles;
-                                }
-                            },
-                            '022': {
-                                start: '022',
-                                startCoords: {
-                                  z: 0,
-                                  y: 2,
-                                  x: 2,
-                                },
-                                currentCoords: {
-                                  z: 0,
-                                  y: 2,
-                                  x: 2,
-                                },
-                                cubeStyles: {},
-                                setCubeStyles: function () {
-                                    var styles = {
-                                        'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                    };
-
-                                    this.cubeStyles = styles;
-
-                                    return styles;
-                                }
-                            }
-                        },
-                        {
-                          '100': {
-                              start: '100',
-                              startCoords: {
-                                z: 1,
-                                y: 0,
-                                x: 0,
-                              },
-                              currentCoords: {
-                                z: 1,
-                                y: 0,
-                                x: 0,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '101': {
-                              start: '101',
-                              startCoords: {
-                                z: 1,
-                                y: 0,
-                                x: 1,
-                              },
-                              currentCoords: {
-                                z: 1,
-                                y: 0,
-                                x: 1,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '102': {
-                              start: '102',
-                              startCoords: {
-                                z: 1,
-                                y: 0,
-                                x: 2,
-                              },
-                              currentCoords: {
-                                z: 1,
-                                y: 0,
-                                x: 2,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '110': {
-                              start: '110',
-                              startCoords: {
-                                z: 1,
-                                y: 1,
-                                x: 0,
-                              },
-                              currentCoords: {
-                                z: 1,
-                                y: 1,
-                                x: 0,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '111': {
-                              start: '111',
-                              startCoords: {
-                                z: 1,
-                                y: 1,
-                                x: 1,
-                              },
-                              currentCoords: {
-                                z: 1,
-                                y: 1,
-                                x: 1,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '112': {
-                              start: '112',
-                              startCoords: {
-                                z: 1,
-                                y: 1,
-                                x: 2,
-                              },
-                              currentCoords: {
-                                z: 1,
-                                y: 1,
-                                x: 2,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '120': {
-                              start: '120',
-                              startCoords: {
-                                z: 1,
-                                y: 2,
-                                x: 0,
-                              },
-                              currentCoords: {
-                                z: 1,
-                                y: 2,
-                                x: 0,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '121': {
-                              start: '121',
-                              startCoords: {
-                                z: 1,
-                                y: 2,
-                                x: 1,
-                              },
-                              currentCoords: {
-                                z: 1,
-                                y: 2,
-                                x: 1,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '122': {
-                              start: '122',
-                              startCoords: {
-                                z: 1,
-                                y: 2,
-                                x: 2,
-                              },
-                              currentCoords: {
-                                z: 1,
-                                y: 2,
-                                x: 2,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          }
-                        },
-                        {
-                          '200': {
-                              start: '200',
-                              startCoords: {
-                                z: 2,
-                                y: 0,
-                                x: 0,
-                              },
-                              currentCoords: {
-                                z: 2,
-                                y: 0,
-                                x: 0,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '201': {
-                              start: '201',
-                              startCoords: {
-                                z: 2,
-                                y: 0,
-                                x: 1,
-                              },
-                              currentCoords: {
-                                z: 2,
-                                y: 0,
-                                x: 1,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '202': {
-                              start: '202',
-                              startCoords: {
-                                z: 2,
-                                y: 0,
-                                x: 2,
-                              },
-                              currentCoords: {
-                                z: 2,
-                                y: 0,
-                                x: 2,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '210': {
-                              start: '210',
-                              startCoords: {
-                                z: 2,
-                                y: 1,
-                                x: 0,
-                              },
-                              currentCoords: {
-                                z: 2,
-                                y: 1,
-                                x: 0,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '211': {
-                              start: '211',
-                              startCoords: {
-                                z: 2,
-                                y: 1,
-                                x: 1,
-                              },
-                              currentCoords: {
-                                z: 2,
-                                y: 1,
-                                x: 1,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '212': {
-                              start: '212',
-                              startCoords: {
-                                z: 2,
-                                y: 1,
-                                x: 2,
-                              },
-                              currentCoords: {
-                                z: 2,
-                                y: 1,
-                                x: 2,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '220': {
-                              start: '220',
-                              startCoords: {
-                                z: 2,
-                                y: 2,
-                                x: 0,
-                              },
-                              currentCoords: {
-                                z: 2,
-                                y: 2,
-                                x: 0,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '221': {
-                              start: '221',
-                              startCoords: {
-                                z: 2,
-                                y: 2,
-                                x: 1,
-                              },
-                              currentCoords: {
-                                z: 2,
-                                y: 2,
-                                x: 1,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          },
-                          '222': {
-                              start: '222',
-                              startCoords: {
-                                z: 2,
-                                y: 2,
-                                x: 2,
-                              },
-                              currentCoords: {
-                                z: 2,
-                                y: 2,
-                                x: 2,
-                              },
-                              cubeStyles: {},
-                              setCubeStyles: function () {
-                                  var styles = {
-                                      'transform' : 'translate(' + 0 + 'px, ' + 0 + 'px) translateZ(' + 0 + 'px) rotateX(' + (this.startCoords.x - this.currentCoords.x) * 90 + 'deg) rotateY(' + (this.startCoords.y - this.currentCoords.y) * 90 + 'deg) rotateZ(' + (this.startCoords.z - this.currentCoords.z) * 90 + 'deg)',
-                                  };
-
-                                  this.cubeStyles = styles;
-
-                                  return styles;
-                              }
-                          }
-                        }
-                      ]
+                    $scope.yell = function () {
+                      console.log($scope.rubics)
                     }
 
                     // "setCubeStyles": function () {
