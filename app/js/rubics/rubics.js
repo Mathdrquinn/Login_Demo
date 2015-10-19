@@ -1,6 +1,6 @@
 angular
-    .module('signupGroup', [
-      'firebase',
+    .module('rubicsGroup', [
+      // 'firebase',
       'ngCookies',
       'ngResource',
       'ngSanitize',
@@ -12,9 +12,9 @@ angular
     })
     .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
-        .state('signup', {
-          url: '/signup',
-          templateUrl: 'views/signup.html',
-          controller: 'signupCtrl'
+        .state('rubics', {
+          url: '/rubics',
+          templateUrl: 'views/rubics.html',
+          controller: 'rubicsCtrl'
         })
     });

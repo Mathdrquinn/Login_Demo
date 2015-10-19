@@ -1,0 +1,102 @@
+<div class="row pad">
+    <h2>Rubics</h2>
+    <form class="controls">
+
+      <!-- Translation Controls-->
+      <h4>Translate</h4>
+      <label for="X">
+        X
+        <br>
+        <input name="rubicsX" type="range" min="-250" max="250" ng-model="rubicsX">
+      </label>
+      <label for="rubicsY">
+        Y
+        <br>
+        <input name="rubicsY" type="range" min="-250" max="250" ng-model="rubicsY">
+      </label>
+      <label for="rubicsZ">
+        Z
+        <br>
+        <input name="rubicsZ" type="range" min="-250" max="250" ng-model="rubicsZ">
+      </label>
+
+      <!-- Rotation Controls-->
+      <h4>Rotate</h4>
+      <label for="rubicsRX">
+        X
+        <br>
+        <input name="rubicsRX" type="range" min="-180" max="180" ng-model="rubicsRX">
+      </label>
+      <label for="rubicsRY">
+        Y
+        <br>
+        <input name="rubicsRY" type="range" min="-180" max="180" ng-model="rubicsRY">
+      </label>
+      <label for="rubicsRZ">
+        Z
+        <br>
+        <input name="rubicsRZ" type="range" min="-180" max="180" ng-model="rubicsRZ">
+      </label>
+      <!-- <input type="checkbox"
+       ng-model="move.z"
+       [name="move.z"]
+       [ng-true-value="true"]
+       [ng-false-value="false"]>
+       <input type="checkbox"
+        ng-model="move.z"
+        [name="move.z"]
+        [ng-true-value="true"]
+        [ng-false-value="false"]>
+        <input type="checkbox"
+         ng-model="move.z"
+         [name="move.z"]
+         [ng-true-value="true"]
+         [ng-false-value="false"]> -->
+      <select name="moveZ" id="moveZ" ng-model="move.z" ng-change="move.dim = 'z'; move.spin = 'z'">
+        <option value="">---Please select---</option> <!-- not selected / blank option -->
+        <option value="0">0</option> <!-- interpolation -->
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      <select name="moveY" id="moveY" ng-model="move.y" ng-change="move.dim = 'y'; move.spin = 'x'">>
+        <option value="">---Please select---</option> <!-- not selected / blank option -->
+        <option value="0">0</option> <!-- interpolation -->
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      <select name="moveX" id="moveX" ng-model="move.x" ng-change="move.dim = 'x'; move.spin = 'y'">>
+        <option value="">---Please select---</option> <!-- not selected / blank option -->
+        <option value="0">0</option> <!-- interpolation -->
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+      <button ng-click="slideForward(move)">move</button>
+
+
+    </form>
+    <div class="world">
+      <!-- Begin Rubics Cube -->
+        <div class="rubics" ng-style="{
+            'transform' : 'translate(' + rubicsX + 'px, ' + rubicsY + 'px) translateZ(' + rubicsZ + 'px) rotateX(' + rubicsRX + 'deg) rotateY(' + rubicsRY + 'deg) rotateZ(' + rubicsRZ + 'deg)',
+            }">
+
+          <div ng-repeat="section in rubics.sections" class="rubics-{{ $index }} rubics-section">
+            <!-- Begin Cube repeat -->
+            <!-- <cube ng-repeat="cube in section" cube="{{ cube.start }}" ngz="{{ cube.startCoords.z }}" ngy="{{ cube.startCoords.y }}" ngx="{{ cube.startCoords.x }}" ngCubeStyles="{{ cube.cubeStyles }}"></cube> -->
+            <div ng-repeat="cube in section" class="cube" cube="{{ cube.start }}" ngz="{{ cube.startCoords.z }}" ngy="{{ cube.startCoords.y }}" ngx="{{ cube.startCoords.x }}" ng-style="cube.cubeStyles"><allfaces></allfaces></div>
+          </div>
+
+      </div>
+    </div>
+    <div ng-repeat="section in rubics.sections" class="">
+      <!-- Begin Cube repeat -->
+      <!-- <h4>section {{ $index }}</h4>
+      <p ng-repeat="cube in section">
+        <strong><input type="text" ng-model="cube.start"></strong>
+        z <input type="text" ng-model="cube.startCoords.z">
+        y <input type="text" ng-model="cube.startCoords.y">
+        x <input type="text" ng-model="cube.startCoords.x">
+      </p>
+    </div> -->
+    <code> {{rubics | json }}</code>
+</div>

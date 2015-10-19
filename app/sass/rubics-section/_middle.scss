@@ -1,0 +1,37 @@
+// Middle Rubics Section
+// Top Left
+[cube="100"] {
+  transform-origin: 78px 78px -26px;
+}
+// Top Center
+[cube="101"] {
+  transform-origin: 26px 78px -26px;
+}
+// Top Right
+[cube="102"] {
+  transform-origin: -26px 78px -26px;
+}
+// Middle Left
+[cube="110"] {
+  transform-origin: 78px 26px -26px;
+}
+// Middle Center
+[cube="111"] {
+  transform-origin: 26px 26px -26px;
+}
+// Middle Right
+[cube="112"] {
+  transform-origin: -26px 26px -26px;
+}
+// Bottom Left
+[cube="120"] {
+  transform-origin: 78px -26px -26px;
+}
+// Bottom Center
+[cube="121"] {
+  transform-origin: 26px -26px -26px;
+}
+// Bottom Right
+[cube="122"] {
+  transform-origin: -26px -26px -26px;
+}

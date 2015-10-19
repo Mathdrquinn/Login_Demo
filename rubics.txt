@@ -1,0 +1,15 @@
+[cube^=0]
+[cube^=1]
+[cube^=2]
+bottom
+[cube$=0000]
+[cube$=0001]
+[cube$=0010]
+Middle
+[cube$=00011]
+[cube$=0100]
+[cube$=0101]
+Top
+[cube$=0110]
+[cube$=0111]
+[cube$=1000]

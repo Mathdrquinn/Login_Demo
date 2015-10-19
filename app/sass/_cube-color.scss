@@ -1,0 +1,74 @@
+[cube^="0"] {
+  .cube-front {
+    background-color: $white;
+  }
+  .cube-back {
+    background-color: $black;
+  }
+}
+
+[cube^="1"] {
+  .cube-front {
+    background-color: $black;
+  }
+  .cube-back {
+    background-color: $black;
+  }
+}
+[cube^="2"] {
+  .cube-front {
+    background-color: $black;
+  }
+  .cube-back {
+    background-color: $blue;
+  }
+}
+// Top Rows
+[cube$="00"], [cube$="01"], [cube$="02"] {
+  .cube-bottom {
+    background-color: $black;
+  }
+  .cube-top {
+    background-color: $red;
+  }
+}
+// Center Rows
+[cube$="10"], [cube$="11"], [cube$="12"] {
+
+}
+// Bottom Rows
+[cube$="20"], [cube$="21"], [cube$="22"] {
+  .cube-bottom {
+    background-color: $orange;
+  }
+  .cube-top {
+    background-color: $black;
+  }
+}
+// Left Column
+[cube$="0"] {
+  .cube-left {
+    background-color: $yellow;
+  }
+  .cube-right {
+    background-color: $black;
+  }
+}
+// Center Column
+[cube$="1"] {
+  .cube-left {
+    background-color: $black;
+  }
+  .cube-right {
+    background-color: $black;
+  }
+}
+// Right Column
+[cube$="2"] {
+  .cube-right {
+    background-color: $green;
+  }
+  .cube-left {
+    background-color: $black;
+  }
+}

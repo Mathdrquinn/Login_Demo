@@ -1,0 +1,388 @@
+{
+  "sections": [
+    {
+        "000": {
+            "start": "000",
+            "startCoords": {
+              "z": 0,
+              "y": 0,
+              "x": 0
+            },
+            "currentCoords": {
+              "z": 0,
+              "y": 0,
+              "x": 0
+            },
+            "cubeStyles": {}
+        },
+        "001": {
+            "start": "001",
+            "startCoords": {
+              "z": 0,
+              "y": 0,
+              "x": 1
+            },
+            "currentCoords": {
+              "z": 0,
+              "y": 0,
+              "x": 1
+            },
+            "cubeStyles": {}
+        },
+        "002": {
+            "start": "002",
+            "startCoords": {
+              "z": 0,
+              "y": 0,
+              "x": 2
+            },
+            "currentCoords": {
+              "z": 0,
+              "y": 0,
+              "x": 2
+            },
+            "cubeStyles": {}
+        },
+        "010": {
+            "start": "010",
+            "startCoords": {
+              "z": 0,
+              "y": 1,
+              "x": 0
+            },
+            "currentCoords": {
+              "z": 0,
+              "y": 1,
+              "x": 0
+            },
+            "cubeStyles": {}
+        },
+        "011": {
+            "start": "011",
+            "startCoords": {
+              "z": 0,
+              "y": 1,
+              "x": 1
+            },
+            "currentCoords": {
+              "z": 0,
+              "y": 1,
+              "x": 1
+            },
+            "cubeStyles": {}
+        },
+        "012": {
+            "start": "012",
+            "startCoords": {
+              "z": 0,
+              "y": 1,
+              "x": 2
+            },
+            "currentCoords": {
+              "z": 0,
+              "y": 1,
+              "x": 2
+            },
+            "cubeStyles": {}
+        },
+        "020": {
+            "start": "020",
+            "startCoords": {
+              "z": 0,
+              "y": 2,
+              "x": 0
+            },
+            "currentCoords": {
+              "z": 0,
+              "y": 2,
+              "x": 0
+            },
+            "cubeStyles": {}
+        },
+        "021": {
+            "start": "021",
+            "startCoords": {
+              "z": 0,
+              "y": 2,
+              "x": 1
+            },
+            "currentCoords": {
+              "z": 0,
+              "y": 2,
+              "x": 1
+            },
+            "cubeStyles": {}
+        },
+        "022": {
+            "start": "022",
+            "startCoords": {
+              "z": 0,
+              "y": 2,
+              "x": 2
+            },
+            "currentCoords": {
+              "z": 0,
+              "y": 2,
+              "x": 2
+            },
+            "cubeStyles": {}
+        }
+    },
+    {
+      "100": {
+          "start": "100",
+          "startCoords": {
+            "z": 1,
+            "y": 0,
+            "x": 0
+          },
+          "currentCoords": {
+            "z": 1,
+            "y": 0,
+            "x": 0
+          },
+          "cubeStyles": {}
+      },
+      "101": {
+          "start": "101",
+          "startCoords": {
+            "z": 1,
+            "y": 0,
+            "x": 1
+          },
+          "currentCoords": {
+            "z": 1,
+            "y": 0,
+            "x": 1
+          },
+          "cubeStyles": {}
+      },
+      "102": {
+          "start": "102",
+          "startCoords": {
+            "z": 1,
+            "y": 0,
+            "x": 2
+          },
+          "currentCoords": {
+            "z": 1,
+            "y": 0,
+            "x": 2
+          },
+          "cubeStyles": {}
+      },
+      "110": {
+          "start": "110",
+          "startCoords": {
+            "z": 1,
+            "y": 1,
+            "x": 0
+          },
+          "currentCoords": {
+            "z": 1,
+            "y": 1,
+            "x": 0
+          },
+          "cubeStyles": {}
+      },
+      "111": {
+          "start": "111",
+          "startCoords": {
+            "z": 1,
+            "y": 1,
+            "x": 1
+          },
+          "currentCoords": {
+            "z": 1,
+            "y": 1,
+            "x": 1
+          },
+          "cubeStyles": {}
+      },
+      "112": {
+          "start": "112",
+          "startCoords": {
+            "z": 1,
+            "y": 1,
+            "x": 2
+          },
+          "currentCoords": {
+            "z": 1,
+            "y": 1,
+            "x": 2
+          },
+          "cubeStyles": {}
+      },
+      "120": {
+          "start": "120",
+          "startCoords": {
+            "z": 1,
+            "y": 2,
+            "x": 0
+          },
+          "currentCoords": {
+            "z": 1,
+            "y": 2,
+            "x": 0
+          },
+          "cubeStyles": {}
+      },
+      "121": {
+          "start": "121",
+          "startCoords": {
+            "z": 1,
+            "y": 2,
+            "x": 1
+          },
+          "currentCoords": {
+            "z": 1,
+            "y": 2,
+            "x": 1
+          },
+          "cubeStyles": {}
+      },
+      "122": {
+          "start": "122",
+          "startCoords": {
+            "z": 1,
+            "y": 2,
+            "x": 2
+          },
+          "currentCoords": {
+            "z": 1,
+            "y": 2,
+            "x": 2
+          },
+          "cubeStyles": {}
+      }
+    },
+    {
+      "200": {
+          "start": "200",
+          "startCoords": {
+            "z": 2,
+            "y": 0,
+            "x": 0
+          },
+          "currentCoords": {
+            "z": 2,
+            "y": 0,
+            "x": 0
+          },
+          "cubeStyles": {}
+      },
+      "201": {
+          "start": "201",
+          "startCoords": {
+            "z": 2,
+            "y": 0,
+            "x": 1
+          },
+          "currentCoords": {
+            "z": 2,
+            "y": 0,
+            "x": 1
+          },
+          "cubeStyles": {}
+      },
+      "202": {
+          "start": "202",
+          "startCoords": {
+            "z": 2,
+            "y": 0,
+            "x": 2
+          },
+          "currentCoords": {
+            "z": 2,
+            "y": 0,
+            "x": 2
+          },
+          "cubeStyles": {}
+      },
+      "210": {
+          "start": "210",
+          "startCoords": {
+            "z": 2,
+            "y": 1,
+            "x": 0
+          },
+          "currentCoords": {
+            "z": 2,
+            "y": 1,
+            "x": 0
+          },
+          "cubeStyles": {}
+      },
+      "211": {
+          "start": "211",
+          "startCoords": {
+            "z": 2,
+            "y": 1,
+            "x": 1
+          },
+          "currentCoords": {
+            "z": 2,
+            "y": 1,
+            "x": 1
+          },
+          "cubeStyles": {}
+      },
+      "212": {
+          "start": "212",
+          "startCoords": {
+            "z": 2,
+            "y": 1,
+            "x": 2
+          },
+          "currentCoords": {
+            "z": 2,
+            "y": 1,
+            "x": 2
+          },
+          "cubeStyles": {}
+      },
+      "220": {
+          "start": "220",
+          "startCoords": {
+            "z": 2,
+            "y": 2,
+            "x": 0
+          },
+          "currentCoords": {
+            "z": 2,
+            "y": 2,
+            "x": 0
+          },
+          "cubeStyles": {}
+      },
+      "221": {
+          "start": "221",
+          "startCoords": {
+            "z": 2,
+            "y": 2,
+            "x": 1
+          },
+          "currentCoords": {
+            "z": 2,
+            "y": 2,
+            "x": 1
+          },
+          "cubeStyles": {}
+      },
+      "222": {
+          "start": "222",
+          "startCoords": {
+            "z": 2,
+            "y": 2,
+            "x": 2
+          },
+          "currentCoords": {
+            "z": 2,
+            "y": 2,
+            "x": 2
+          },
+          "cubeStyles": {}
+      }
+    }
+  ]
+}

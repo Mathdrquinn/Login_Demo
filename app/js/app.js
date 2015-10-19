@@ -8,7 +8,8 @@ angular
     'ngSanitize',
     'ui.router',
     'signupGroup',
-    'loginGroup'
+    'loginGroup',
+    'rubicsGroup'
   ])
   .config(($httpProvider, $locationProvider, $stateProvider, $urlRouterProvider) => {
     // Clean Url
@@ -27,11 +28,6 @@ angular
     //   templateUrl: 'views/signup.html',
     //   controller: 'signupCtrl'
     // })
-    .state('books', {
-      url: '/books',
-      templateUrl: 'views/books.html',
-      controller: 'booksCtrl'
-    })
     .state('home', {
       url: '/',
       templateUrl: 'views/home.html',
