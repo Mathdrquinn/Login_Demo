@@ -40,25 +40,31 @@
 
       <button ng-click="getScope()">Rubics</button>
       <button ng-click="rubics = loop(rubics, resetCubeStyles)">Reset</button>
-
+      <br />
+      z
       <select name="moveZ" id="moveZ" ng-model="move.z" ng-change="move.dim = 'z'; move.spin = 'z'">
         <option value="">---Please select---</option> <!-- not selected / blank option -->
         <option value="0">0</option> <!-- interpolation -->
         <option value="1">1</option>
         <option value="2">2</option>
       </select>
+      <br />
+      Y
       <select name="moveY" id="moveY" ng-model="move.y" ng-change="move.dim = 'y'; move.spin = 'x'">>
         <option value="">---Please select---</option> <!-- not selected / blank option -->
         <option value="0">0</option> <!-- interpolation -->
         <option value="1">1</option>
         <option value="2">2</option>
       </select>
+      <br />
+      X
       <select name="moveX" id="moveX" ng-model="move.x" ng-change="move.dim = 'x'; move.spin = 'y'">>
         <option value="">---Please select---</option> <!-- not selected / blank option -->
         <option value="0">0</option> <!-- interpolation -->
         <option value="1">1</option>
         <option value="2">2</option>
       </select>
+      <br />
       <button ng-click="rubics = loop(rubics, slideForward)">move</button>
 
 
@@ -72,7 +78,7 @@
           <div ng-repeat="section in rubics.sections" class="rubics-{{ $index }} rubics-section">
             <!-- Begin Cube repeat -->
             <!-- <cube ng-repeat="cube in section" cube="{{ cube.start }}" ngz="{{ cube.startCoords.z }}" ngy="{{ cube.startCoords.y }}" ngx="{{ cube.startCoords.x }}" ngCubeStyles="{{ cube.cubeStyles }}"></cube> -->
-            <div ng-repeat="cube in section" class="cube" cube="{{ cube.start }}" ngz="{{ cube.startCoords.z }}" ngy="{{ cube.startCoords.y }}" ngx="{{ cube.startCoords.x }}" ng-style="cube.cubeStyles"><allfaces></allfaces></div>
+            <div ng-repeat="cube in section" class="cube" cube="{{ cube.start }}" ngz="{{ cube.startCoords.z }}" ngy="{{ cube.startCoords.y }}" ngx="{{ cube.startCoords.x }}" ngcz="{{ cube.currentCoords.z }}" ngcy="{{ cube.currentCoords.y }}" ngcx="{{ cube.currentCoords.x }}"ng-style="cube.cubeStyles"><allfaces></allfaces></div>
           </div>
 
       </div>
