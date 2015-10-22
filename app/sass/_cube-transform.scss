@@ -1,6 +1,18 @@
+$half: 25px;
+$neg-half: -25px;
+$whole: 50px;
+$one-and-a-half: 75px;
+$neg-one-and-a-half: -75px;
+
+// // Front Rubics Section
+// @import "rubics-section/front";
+// // Middle Rubics Section
+// @import "rubics-section/middle";
+// // Back Rubics Section
+// @import "rubics-section/back";
 // Front Rubics Section
-@import "rubics-section/front";
+@import "rubics-section/front2";
 // Middle Rubics Section
-@import "rubics-section/middle";
+@import "rubics-section/middle2";
 // Back Rubics Section
-@import "rubics-section/back";
+@import "rubics-section/back2";

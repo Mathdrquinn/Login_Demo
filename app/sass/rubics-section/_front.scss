@@ -1,37 +1,37 @@
 // Front Rubics Section
 // Top Left
 [cube="000"] {
-  transform-origin: 78px 78px -78px;
+  transform-origin: $one-and-a-half $one-and-a-half $neg-one-and-a-half;
 }
 // Top Center
 [cube="001"] {
-  transform-origin: 26px 78px -78px;
+  transform-origin: $half $one-and-a-half $neg-one-and-a-half;
 }
 // Top Right
 [cube="002"] {
-  transform-origin: -26px 78px -78px;
+  transform-origin: $neg-half $one-and-a-half $neg-one-and-a-half;
 }
 // Middle Left
 [cube="010"] {
-  transform-origin: 78px 26px -78px;
+  transform-origin: $one-and-a-half $half $neg-one-and-a-half;
 }
 // Middle Center
 [cube="011"] {
-  transform-origin: 26px 26px -78px;
+  transform-origin: $half $half $neg-one-and-a-half;
 }
 // Middle Right
 [cube="012"] {
-  transform-origin: -26px 26px -78px;
+  transform-origin: $neg-half $half $neg-one-and-a-half;
 }
 // Bottom Left
 [cube="020"] {
-  transform-origin: 78px -26px -78px;
+  transform-origin: $one-and-a-half $neg-half $neg-one-and-a-half;
 }
 // Bottom Center
 [cube="021"] {
-  transform-origin: 26px -26px -78px;
+  transform-origin: $half $neg-half $neg-one-and-a-half;
 }
 // Bottom Right
 [cube="022"] {
-  transform-origin: -26px -26px -78px;
+  transform-origin: $neg-half $neg-half $neg-one-and-a-half;
 }

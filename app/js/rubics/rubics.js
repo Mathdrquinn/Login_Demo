@@ -17,4 +17,9 @@ angular
           templateUrl: 'views/rubics.html',
           controller: 'rubicsCtrl'
         })
+        .state('rubics2', {
+          url: '/rubics2',
+          templateUrl: 'views/rubics2.html',
+          controller: 'rubics2Ctrl'
+        })
     });

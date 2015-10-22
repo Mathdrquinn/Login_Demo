@@ -1,74 +1,204 @@
+// Front
 [cube^="0"] {
   .cube-front {
+    background-color: $black;
+  }
+  .cube-back {
     background-color: $white;
   }
-  .cube-back {
-    background-color: $black;
-  }
 }
-
-[cube^="1"] {
-  .cube-front {
-    background-color: $black;
-  }
-  .cube-back {
-    background-color: $black;
-  }
+[cube="000"] {
+    .cube-top {
+        background-color: $red;
+    }
+    .cube-left {
+        background-color: $yellow;
+    }
 }
-[cube^="2"] {
-  .cube-front {
-    background-color: $black;
-  }
-  .cube-back {
-    background-color: $blue;
-  }
+[cube="001"] {
+    .cube-top {
+        background-color: $red;
+    }
 }
-// Top Rows
-[cube$="00"], [cube$="01"], [cube$="02"] {
-  .cube-bottom {
-    background-color: $black;
-  }
-  .cube-top {
-    background-color: $red;
-  }
+[cube="002"] {
+    .cube-left {
+        background-color: $red;
+    }
+    .cube-top {
+        background-color: $green;
+    }
 }
-// Center Rows
-[cube$="10"], [cube$="11"], [cube$="12"] {
+[cube="010"] {
+    .cube-top {
+        background-color: $yellow;
+    }
+}
+[cube="011"] {
 
 }
-// Bottom Rows
-[cube$="20"], [cube$="21"], [cube$="22"] {
-  .cube-bottom {
-    background-color: $orange;
-  }
-  .cube-top {
-    background-color: $black;
-  }
+[cube="012"] {
+    .cube-top {
+        background-color: $green;
+    }
 }
-// Left Column
-[cube$="0"] {
-  .cube-left {
-    background-color: $yellow;
-  }
-  .cube-right {
-    background-color: $black;
-  }
+[cube="020"] {
+    .cube-top {
+        background-color: $yellow;
+    }
+    .cube-left {
+        background-color: $orange;
+    }
 }
-// Center Column
-[cube$="1"] {
-  .cube-left {
-    background-color: $black;
-  }
-  .cube-right {
-    background-color: $black;
-  }
+[cube="021"] {
+    .cube-top {
+        background-color: $orange;
+    }
 }
-// Right Column
-[cube$="2"] {
-  .cube-right {
-    background-color: $green;
-  }
-  .cube-left {
-    background-color: $black;
-  }
+[cube="022"] {
+    .cube-left {
+        background-color: $green;
+    }
+    .cube-top {
+        background-color: $orange;
+    }
+}
+
+// Middle
+[cube="100"] {
+    .cube-top {
+        background-color: $red;
+    }
+    .cube-back {
+        background-color: $yellow;
+    }
+}
+[cube="101"] {
+    .cube-back {
+        background-color: $red;
+    }
+}
+[cube="102"] {
+    .cube-top {
+        background-color: $green;
+    }
+    .cube-back {
+        background-color: $red;
+    }
+}
+[cube="110"] {
+    .cube-back {
+        background-color: $yellow;
+    }
+}
+[cube="111"] {
+
+}
+[cube="112"] {
+    .cube-back {
+        background-color: $green;
+    }
+}
+[cube="120"] {
+    .cube-top {
+        background-color: $yellow;
+    }
+    .cube-back {
+        background-color: $orange;
+    }
+}
+[cube="121"] {
+    .cube-back {
+        background-color: $orange;
+    }
+}
+[cube="122"] {
+    .cube-back {
+        background-color: $green;
+    }
+    .cube-top {
+        background-color: $orange;
+    }
+}
+
+// Top
+[cube="200"] {
+    .cube-top {
+        background-color: $blue;
+    }
+    .cube-back {
+        background-color: $red;
+    }
+    .cube-left {
+        background-color: $yellow;
+    }
+}
+[cube="201"] {
+    .cube-top {
+        background-color: $blue;
+    }
+    .cube-back {
+        background-color: $red;
+    }
+}
+[cube="202"] {
+    .cube-top {
+        background-color: $blue;
+    }
+    .cube-left {
+        background-color: $red;
+    }
+    .cube-back {
+        background-color: $green;
+    }
+}
+[cube="210"] {
+    .cube-back {
+        background-color: $blue;
+    }
+    .cube-top {
+        background-color: $yellow;
+    }
+}
+[cube="211"] {
+    .cube-back {
+        background-color: $blue;
+    }
+}
+[cube="212"] {
+    .cube-back {
+        background-color: $blue;
+    }
+    .cube-top {
+        background-color: $green;
+    }
+}
+[cube="220"] {
+    .cube-top {
+        background-color: $blue;
+    }
+    .cube-back {
+        background-color: $yellow;
+    }
+    .cube-left {
+        background-color: $orange;
+    }
+}
+[cube="221"] {
+    .cube-back {
+        background-color: $blue;
+    }
+    .cube-top {
+        background-color: $orange;
+    }
+}
+[cube="222"] {
+    .cube-top {
+        background-color: $blue;
+    }
+    .cube-left {
+        background-color: $green;
+    }
+    .cube-back {
+        background-color: $orange;
+    }
 }

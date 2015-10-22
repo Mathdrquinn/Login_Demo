@@ -1,0 +1,43 @@
+// Front Rubics Section
+// Top Left
+[cube="000"] {
+    transform-origin: $one-and-a-half $one-and-a-half $half;
+}
+// Top Center
+[cube="001"] {
+    left: 50px;
+    transform-origin: $half $one-and-a-half $half;
+}
+// Top Right
+[cube="002"] {
+    transform-origin: $one-and-a-half $one-and-a-half $half;
+}
+// Middle Left
+[cube="010"] {
+    left: 50px;
+    transform-origin: $half $one-and-a-half $half;
+}
+// Middle Center
+[cube="011"] {
+    left: 50px;
+    top: 50px;
+    transform-origin: $half $half $half;
+}
+// Middle Right
+[cube="012"] {
+    left: 50px;
+    transform-origin: $half $one-and-a-half $half;
+}
+// Bottom Left
+[cube="020"] {
+    transform-origin: $one-and-a-half $one-and-a-half $half;
+}
+// Bottom Center
+[cube="021"] {
+    left: 50px;
+    transform-origin: $half $one-and-a-half $half;
+}
+// Bottom Right
+[cube="022"] {
+    transform-origin: $one-and-a-half $one-and-a-half $half;
+}

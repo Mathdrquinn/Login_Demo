@@ -12,7 +12,8 @@ $yellow: #f1c40f;
 	perspective-origin: 50% 50%;
   text-align: center;
   .rubics {
-    width: 162px;
+    width: 150px;
+    height:150px;
     margin: 0 auto;
     transform-style: preserve-3d;
     transform-origin: 50% 50% -75px;
@@ -29,12 +30,12 @@ $yellow: #f1c40f;
     .rubics-0 {
 
     }
-    .rubics-1 {
-      transform: translateZ(-54px);
-    }
-    .rubics-2 {
-      transform: translateZ(-108px);
-    }
+    // .rubics-1 {
+    //   transform: translateZ(-50px);
+    // }
+    // .rubics-2 {
+    //   transform: translateZ(-100px);
+    // }
   }
 }
 .controls {
@@ -45,12 +46,14 @@ $yellow: #f1c40f;
 .cube {
   width: 50px;
   height: 50px;
+  box-sizing: border-box;
 
   display: inline-block;
-  position: relative;
+  position: absolute;
+  left: 0;
 
   float: left;
-  margin: 2px;
+  padding: 2px;
 
   transform-style: preserve-3d;
   transition: all 1000ms ease;
